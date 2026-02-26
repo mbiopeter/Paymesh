@@ -26,7 +26,7 @@ interface ApiKey {
     created: string;
 }
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 3;
 const DOC_ITEMS_PER_PAGE = 2; // Pagination for documentation
 
 const generateKey = (id: number | string) =>
@@ -209,7 +209,7 @@ const Page = () => {
                 </div>
 
                 {/* Table Section */}
-                <div className="bg-white rounded-sm shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-sm shadow-sm border border-gray-100 overflow-auto">
                     <table className="w-full text-xs">
                         <thead className="bg-gray-50 text-gray-500 text-xs uppercase">
                             <tr>
@@ -253,11 +253,12 @@ const Page = () => {
                 </div>
 
                 {/* --- PAGINATED DOCUMENTATION SECTION --- */}
-                <div className="bg-white rounded-sm shadow-sm border border-gray-100 p-6 space-y-4">
+                <div className="bg-white rounded-sm  shadow-sm border border-gray-100 p-6 space-y-4">
                     <div className="flex justify-between items-center mb-4">
                         <div className="flex items-center gap-2">
                             <BookOpen size={18} className="text-teal-600" />
-                            <h3 className="font-bold text-gray-800 text-sm md:text-base">API Documentation & Usage Guide</h3>
+                            <h3 className="font-bold hidden text-gray-800 text-sm md:text-base">API Documentation & Usage Guide</h3>
+                            <h3 className="font-bold md:hidden text-gray-800 text-sm md:text-base">API Docs</h3>
                         </div>
                         <div className="flex items-center gap-3">
                             <span className="text-[10px] font-bold text-gray-400 uppercase">Step {docPage} of {totalDocPages}</span>
