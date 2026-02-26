@@ -3,10 +3,12 @@ import {  Plus, Maximize, Bell, Menu, LayoutDashboard,
     CreditCard, Key, LogOut, X, Wallet, Wallpaper, Fingerprint
 } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Upbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [activeItem, setActiveItem] = useState('Dashboard');
+    const router = useRouter();
 
     const menuItems = [
         { name: 'Dashboard', route: "/", icon: <LayoutDashboard size={20} /> },
@@ -81,7 +83,11 @@ const Upbar = () => {
                     return (
                         <button
                             key={item.name}
-                            onClick={() => { setActiveItem(item.name); setDropdownOpen(false); }}
+                            onClick={() => { 
+                                setActiveItem(item.name); 
+                                setDropdownOpen(false);
+                                router.push(item.route);
+                            }}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xs transition-all w-full text-left ${
                                 isActive 
                                     ? 'bg-teal-600 shadow-inner' 
